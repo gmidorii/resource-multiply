@@ -1,0 +1,33 @@
+# https://taskfile.dev
+
+version: '3'
+
+
+tasks:
+  setup:
+    cmds:
+      - docker compose up -d
+
+  down:
+    cmds:
+      - docker compose down
+
+  restart:
+    cmds:
+      - task: down
+      - task: setup
+
+  logs:
+    cmds:
+      - docker compose logs -f
+
+  connect-db:
+    cmds:
+      - docker compose exec db psql -U admin -d db
+
+  dump-db:
+    cmds:
+      - |
+        docker compose exec db pg_dump --schema-only \
+          --schema=hoge -U admin db \
+          > dump.sql

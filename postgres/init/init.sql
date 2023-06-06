@@ -1,4 +1,4 @@
-CREATE USER admin;
+CREATE USER admin WITH PASSWORD 'password';
 
 GRANT ALL PRIVILEGES ON DATABASE db TO admin;
 

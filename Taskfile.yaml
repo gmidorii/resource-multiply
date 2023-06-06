@@ -4,6 +4,14 @@ version: '3'
 
 
 tasks:
+  test:
+    cmds:
+      - CGO_ENABLED=0 go test ./...
+
+  ps:
+    cmds:
+      - docker compose ps
+
   setup:
     cmds:
       - docker compose up -d
